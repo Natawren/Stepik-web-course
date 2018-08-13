@@ -19,4 +19,4 @@ server.listen(10)
 
 while True:
     channel, details = server.accept()
-    ClientThread(channel, details).start()
+    ClientThread(channel, details).sta
