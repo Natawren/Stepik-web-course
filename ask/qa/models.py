@@ -14,7 +14,7 @@ class Question(models.Model):
   title = models.CharField(max_length=255)
   text = models.TextField(default='')
   added_at = models.DateField(blank = True)
-  rating = models.IntergerField(default=0)
+  rating = models.IntegerField(default=0)
   author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
   likes = models.ManyToManyField(User, related_name = likes_in_db)
   
