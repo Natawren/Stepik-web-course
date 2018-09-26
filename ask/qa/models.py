@@ -11,11 +11,11 @@ class QuestionManager(models.Manager):
           
 class Question(models.Model):
   objects = QuestionManager() 
-  title = models.CharField(max_length = 255)
-  text = models.TextField()
+  title = models.CharField(max_length=255)
+  text = models.TextField(default='')
   added_at = models.DateField(blank = True)
-  rating = models.IntergerField()
-  author = models.ForeignKey(User, null = True, on_delete = models.SET_NULL)
+  rating = models.IntergerField(default=0)
+  author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
   likes = models.ManyToManyField(Likes)
   
   def __str__(self):
@@ -24,7 +24,7 @@ class Question(models.Model):
     return '/question/%d/' %self.pk
 
 class Answer(models.Model):
-  text = models.TextField()
+  text = models.TextField(default='')
   added_at = models.DateField(blank = True)
   question = models.ForeignKey(Question, null = True, on_delete = models.SET_NULL)
   author = models.ForeignKey(User, null = True, on_delete = models.SET_NULL)
